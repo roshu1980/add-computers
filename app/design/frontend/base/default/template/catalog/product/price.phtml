@@ -211,6 +211,9 @@ $_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStore
                         <?php echo $_coreHelper->formatPrice($_finalPrice, true) ?>
                     <?php endif; ?>
                 </span>
+                <?php if (is_numeric($_product->getMinPriceLimit()) && $_product->getMinPriceLimit() > 0 && $_product->getMinPriceLimit() < $_product->getPrice() ): ?>
+                    <div style="margin-top:8px;">or <a href="#" id="makeOffer" style="color:red; font-size: 18px;">Make us an offer!</a></div>
+                <?php endif; ?>
             <?php endif; ?>
         <?php endif; ?>
     <?php else: /* if ($_finalPrice == $_price): */ ?>
