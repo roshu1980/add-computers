@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Addcomputers_Makeoffer>
+	        <active>true</active>
+	        <codePool>local</codePool>
+        </Addcomputers_Makeoffer>
+    </modules>
+</config>

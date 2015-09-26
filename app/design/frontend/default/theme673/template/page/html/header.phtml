@@ -87,19 +87,8 @@
 		<div class="clear"></div>
 	</div>
 </div>
-<style>
-.header-modal {
-    background: #fff none repeat scroll 0 0;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.18);
-    position: fixed;
-    right: 41%;
-    top: 23%;
-    width: 350px;
-    z-index: 12;
-}    
-</style>
 <div class="header-modal">
-    <div class="youama-offer-window" id="offerModal" style="display:none;">
+    <div class="youama-offer-user-window" style="display:none;">
         <div class="youama-window-outside">
             <span class="close">×</span>
             <div class="youama-window-inside">
@@ -109,27 +98,49 @@
                 <div class="youama-window-box first">
                     <div class="youama-window-content">
                         <div class="input-fly youama-showhideme">
-                            <label for="youama-email">E-mail address <span>*</span></label>
-                            <input type="text" value="" name="youama-email" id="youama-email" placeholder="E-mail address">
-                            <div class="youama-ajaxlogin-error err-email err-noemail err-wrongemail err-wronglogin" style="display: none;"></div>
+                            <label for="youama-email">Price Offered <span>*</span></label>
+                            <input type="text" value="" name="offeredPrice" id="offeredPrice" placeholder="Price Offered">
+                            <div class="youama-ajaxlogin-error err-price" style="display: none;"></div>
                         </div>
                         <div class="input-fly youama-showhideme">
-                            <label for="youama-password">Password <span>*</span></label>
-                            <input type="password" value="" name="youama-password" id="youama-password" placeholder="Password" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QsPDhss3LcOZQAAAU5JREFUOMvdkzFLA0EQhd/bO7iIYmklaCUopLAQA6KNaawt9BeIgnUwLHPJRchfEBR7CyGWgiDY2SlIQBT/gDaCoGDudiy8SLwkBiwz1c7y+GZ25i0wnFEqlSZFZKGdi8iiiOR7aU32QkR2c7ncPcljAARAkgckb8IwrGf1fg/oJ8lRAHkR2VDVmOQ8AKjqY1bMHgCGYXhFchnAg6omJGcBXEZRtNoXYK2dMsaMt1qtD9/3p40x5yS9tHICYF1Vn0mOxXH8Uq/Xb389wff9PQDbQRB0t/QNOiPZ1h4B2MoO0fxnYz8dOOcOVbWhqq8kJzzPa3RAXZIkawCenHMjJN/+GiIqlcoFgKKq3pEMAMwAuCa5VK1W3SAfbAIopum+cy5KzwXn3M5AI6XVYlVt1mq1U8/zTlS1CeC9j2+6o1wuz1lrVzpWXLDWTg3pz/0CQnd2Jos49xUAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-position: right center; cursor: auto;">
-                            <div class="youama-ajaxlogin-error err-password err-dirtypassword err-nopassword err-longpassword" style="display: none;"></div>
+                            <label for="youama-password">Quantity <span>*</span></label>
+                            <input type="number" value="" name="quantityWanted" id="quantityWanted" placeholder="Quantity">
+                            <div class="youama-ajaxlogin-error err-quantity" style="display: none;"></div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="youama-window-box last">
+                <div class="youama-window-box last margin-top-20">
                     <div class="youama-window-content box-contents box-contents-button youama-showhideme">
-                        <button class="button btn-proceed-checkout btn-checkout youama-ajaxlogin-button" type="button">
-                            <span>Login</span>
+                        <button class="button btn-proceed-checkout btn-checkout youama-makeoffer-button" type="button">
+                            <span>Send Offer</span>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="youama-offer-guest-window" style="display:none;">
+        <div class="youama-window-outside">
+            <span class="close">×</span>
+            <div class="youama-window-inside">
+                <div class="youama-window-title">
+                    <h3>Make Offer</h3>
+                </div>
+                <div class="youama-window-box first">
+                    <div class="youama-window-content text-center">
+                        <br />
+                        <p>Please <span id="goToRegister" class="offer-yoauam-switch-window">Register</span> or <span id="goToLogin" class="offer-yoauam-switch-window">Login</span> first, to be able to make an offer.</p>
+                        <br />
+                    </div>
+                </div>
+                <div class="youama-window-box last"></div>
+            </div>
+        </div>
+    </div>
+    <div class="youama-offer-ajaxlogin-loader"></div>
 </div>
+<script type="text/javascript">
+    var isLoggedIn = <?php echo (Mage::getSingleton('customer/session')->isLoggedIn() ? 1 : 0); ?>
+</script>
 <?php echo $this->getChildHtml('topMenu') ?>

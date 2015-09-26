@@ -79,6 +79,7 @@ Default layout, loads most of the pages
                 <action method="addCss"><stylesheet>css/styles.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/responsive.css</stylesheet></action>
                 <action method="addItem"><type>skin_css</type><name>css/styles-ie.css</name><params/><if>lt IE 8</if></action>
+                <action method="addItem"><type>skin_css</type><name>css/addcomputers/make.offer.css</name><params/></action>
 				<action method="addCss"><stylesheet>css/superfish.css</stylesheet></action>
 				<action method="addCss"><stylesheet>css/camera.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/widgets.css</stylesheet></action>
