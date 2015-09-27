@@ -1,0 +1,65 @@
+<!--@subject This is the subject line of the email! @-->
+<div style="font:11px/1.35em Arial, Verdana, Helvetica, sans-serif;">
+  <table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; margin-bottom:10px;">
+    <tr>
+      <td align="center" valign="top">
+        <!-- [ header starts here] -->
+          <table cellspacing="0" cellpadding="0" border="0" width="650">
+            <tr>
+              <td valign="top">
+                <p>
+                  <a href="{{store url=""}}" style="color:#1E7EC8;"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="Magento" border="0"/></a>
+                </p>
+              </td>
+            </tr>
+          </table>
+          <!-- [ middle starts here] -->
+          <table cellspacing="0" cellpadding="0" border="0" width="650">
+            <tr>
+              <td valign="top">
+                <strong>Hello</strong>,
+                <br /><br />
+                A new offer has been submitted to your server.
+                <br /><br />
+                <strong>Customer data:</strong>
+                <table>
+                    <tr>
+                        <td>Name: </td>
+                        <td>{{var name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email: </td>
+                        <td>{{var email}}</td>
+                    </tr>
+                </table>
+                <br />
+                <strong>Offer data:</strong>
+                <br />
+                <table>
+                    <tr>
+                        <td>Product Name: </td>
+                        <td>{{var prod_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Product #ID: </td>
+                        <td>{{var prod_id}}</td>
+                    </tr>
+                    <tr>
+                        <td>Quantity : </td>
+                        <td>{{var prod_qty}}</td>
+                    </tr>
+                    <tr>
+                        <td>Product Price: </td>
+                        <td>&pound;{{var prod_price}}</td>
+                    </tr>
+                </table>
+                <br /><br />
+                Best regards,<br />
+                ServersAndSpares Team.
+              </td>
+            </tr>
+          </table>
+      </td>
+    </tr>
+  </table>
+</div>

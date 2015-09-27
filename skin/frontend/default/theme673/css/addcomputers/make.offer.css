@@ -43,3 +43,49 @@
 .margin-top-8 { margin-top: 8px; }
 .margin-top-20 { margin-top: 20px; }
 a.make-offer { color:red; font-size: 18px; }
+.youama-ajaxlogin-success { color: #00CC00; }
+
+button.button.youama-add-tocart-button > span { background: #00CC00 none repeat scroll 0 0;}
+
+.cms-rma .ui-state-default::before {
+    content: "";
+}
+
+.cms-rma .ui-widget-header .ui-icon {
+    background-image: url("../../images/icons.png");
+}
+
+.cms-rma .ui-icon-circle-triangle-w {
+    background-position: -58px -14px;
+}
+
+.cms-rma .ui-icon-circle-triangle-e {
+    background-position: -146px -14px;
+}
+
+.cms-rma ui-state-hover {
+    color: #FFF;
+}
+
+.rmaProduct {
+    color: #ff0000; 
+    font-weight: bold;
+    border-bottom: 2px #ff0000 solid;
+    font-size: 18px;
+}
+
+.cms-rma .form-list textarea
+{
+    margin-bottom: 10px;
+    width: 333px;
+}
+
+.switch-window {
+    color: #fe6868;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    margin-top: 8px;
+    padding: 5px;
+    text-decoration: underline;
+}

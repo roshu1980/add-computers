@@ -22,6 +22,7 @@ $installer->addAttribute("customer", "offers",  array(
     "note"      => "Customer Offers"
 ));
 
+
 $attribute = Mage::getSingleton("eav/config")->getAttribute("customer", "offers");
 
 $setup->addAttributeToGroup(

@@ -1,4 +1,11 @@
-var offeredProduct = 0, thisUser;
+var offeredProduct = 0, thisUser,
+    errorMessages = {
+        'has3Offers': 'You already made 3 offers for this product. You will be able to make another offer in 24 hours.',
+        'productError': 'Something went wrong. Please try again or contact the site administrator.',
+        'priceTooBig': 'We are glad that you are so generous but, your offer is bigger then our standard price.',
+        'productNotInStock': 'We are sorry, this product is not in stock anymore.',
+        'offerRejected': 'We are sorry but, your offer has been rejected.'
+    };
 (function($) {
 
 	$(document).ready(function() {
@@ -46,6 +53,49 @@ var offeredProduct = 0, thisUser;
             var thisPrice = $('#offeredPrice').val();
             var thisQuantity = $('#quantityWanted').val();
 	        checkTheOffer(thisPrice, thisQuantity);
+            return false;
+        });
+
+        // Click on add to cart button
+        $('.youama-add-tocart-button').on('click', function() {
+
+            animateLoader(thisUser, 'start');
+            jQuery.post('/makeoffer/index/addtocart', {}, function (result){
+
+                // stopping both loaders (maybe the user is not logged in anymore)
+                animateLoader('offer-user', 'stop');
+                animateLoader('offer-guest', 'stop');
+                
+                // if failed show the error
+                if (!result.success)
+                {
+                    if (result.error == 'notLoggedIn')
+                    {
+                        animateCloseWindow(thisUser, true, true);
+                        animateShowWindow('offer-guest');
+                    }
+                    else
+                    {
+                        var errors = {};
+                        if (typeof eval('errorMessages.' + result.error) != 'undefined')
+                            error = eval('errorMessages.' + result.error);
+                        else
+                            error = errorMessages.productError;
+                        errors.main = error;
+                        setError(errors);
+                    }
+                }
+                // if all ok --> got to CART!
+                else
+                {
+                    animateCloseWindow(thisUser, false, true);
+                    window.location.href = '/checkout/cart';
+                }
+
+                return false;
+            }, 'json');
+
+
             return false;
         });
 	});
@@ -98,10 +148,42 @@ function checkTheOffer(thisPrice, thisQuantity)
 function makeTheOffer(thisPrice, thisQuantity)
 {
 	params = {price: thisPrice, quantity: thisQuantity, id: offeredProduct};
-	animateLoader(thisUser, 'start')	
-	jQuery.post('/makeoffer/index/sendoffer', params, function (data){
-		console.log(data);
-		animateLoader(thisUser, 'stop')	
+	animateLoader(thisUser, 'start');	
+	jQuery.post('/makeoffer/index/sendoffer', params, function (result){
+
+        // stopping both loaders (maybe the user is not logged in anymore)
+        animateLoader('offer-user', 'stop');
+        animateLoader('offer-guest', 'stop');
+        
+        // if failed show the error
+        if (!result.success)
+        {
+            if (result.error == 'notLoggedIn')
+            {
+                animateCloseWindow(thisUser, true, true);
+                animateShowWindow('offer-guest');
+            }
+            else
+            {
+                var errors = {};
+                if (typeof eval('errorMessages.' + result.error) != 'undefined')
+                    error = eval('errorMessages.' + result.error);
+                else
+                    error = errorMessages.productError;
+                errors.main = error;
+                setError(errors);
+            }
+        }
+        // if all ok show the add to cart button
+        else
+        {
+            jQuery('.youama-offer-user-window input').attr('disabled', 'disabled');
+            jQuery('.youama-' + thisUser + '-window .youama-ajaxlogin-success').fadeIn();
+            jQuery('.youama-makeoffer-button').hide();
+            jQuery('.youama-add-tocart-button').show();
+        }
+
+        return false;
 	}, 'json');
 }
 
@@ -125,6 +207,12 @@ function animateShowWindow(windowName) {
 }
 
 function animateCloseWindow(windowName, quickly, closeParent) {
+
+    jQuery('.youama-' + thisUser + '-window .youama-ajaxlogin-success').hide();
+    jQuery('.youama-makeoffer-button').show();
+    jQuery('.youama-add-tocart-button').hide();
+    jQuery('.youama-window-content .input-fly input').val('');
+
     if (quickly == true) {
         jQuery('.youama-' + windowName + '-window').hide();
         jQuery('.youama-ajaxlogin-error').hide(function() {

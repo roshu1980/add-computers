@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Addcomputers_Makeoffer>
-            <version>0.1.0</version>    <!-- Version number of your module -->
+            <version>0.1.0</version>
         </Addcomputers_Makeoffer>
     </modules>
     <frontend>
@@ -17,6 +17,22 @@
         </routers>
     </frontend>
     <global>
+        <models>
+            <addcomputers_makeoffer>
+                 <class>Addcomputers_Makeoffer_Model</class>
+            </addcomputers_makeoffer>
+        </models>
+        <events>
+            <sales_quote_add_item>
+                <observers>
+                    <priceupdate_observer>
+                        <type>singleton</type>
+                        <class>Addcomputers_Makeoffer_Model_Observer</class>
+                        <method>updatePrice</method>
+                    </priceupdate_observer>
+                </observers>
+            </sales_quote_add_item>
+        </events>
         <resources>
             <addcomputers_makeoffer_setup>
                 <setup>
@@ -38,5 +54,14 @@
                 </connection>
             </addcomputers_makeoffer_read>
         </resources>
+        <template>
+            <email>
+                <makeoffer>
+                    <label>Make Offer</label>
+                    <file>makeoffer.html</file>
+                    <type>html</type>
+                </makeoffer>
+            </email>
+        </template>        
     </global>
 </config>
