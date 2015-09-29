@@ -209,9 +209,10 @@ function animateShowWindow(windowName) {
 function animateCloseWindow(windowName, quickly, closeParent) {
 
     jQuery('.youama-' + thisUser + '-window .youama-ajaxlogin-success').hide();
-    jQuery('.youama-makeoffer-button').show();
+    jQuery('.youama-ajaxlogin-success').hide();
     jQuery('.youama-add-tocart-button').hide();
-    jQuery('.youama-window-content .input-fly input').val('');
+    jQuery('.youama-makeoffer-button').show();
+    jQuery('.youama-window-content .input-fly input').removeAttr('disabled').val('');
 
     if (quickly == true) {
         jQuery('.youama-' + windowName + '-window').hide();

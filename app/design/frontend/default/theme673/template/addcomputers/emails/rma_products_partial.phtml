@@ -1,0 +1,12 @@
+<table>
+    <?php foreach ($this->getProducts() as $key => $product): ?>
+        <tr><td colspan="2" style="color: green;"><strong>Product <?php echo $key+1; ?>:</strong></td></tr>
+        <?php foreach ($product as $name => $value): ?>
+            <tr>
+                <td><?php echo $name; ?>: </td>
+                <td><?php echo $value; ?></td>
+            </tr>
+        <?php endforeach; ?>    
+        <tr><td colspan="2"><br /></td></tr>
+    <?php endforeach; ?>    
+</table>

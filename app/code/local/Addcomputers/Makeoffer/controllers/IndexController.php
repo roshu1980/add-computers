@@ -133,7 +133,7 @@ class Addcomputers_Makeoffer_IndexController extends Mage_Core_Controller_Front_
 		// get customer data
 		$customer = Mage::getSingleton('customer/session')->getCustomer();
 
-		$emailTemplate = Mage::getModel('core/email_template')->loadDefault('makeoffer');
+		$emailTemplate = Mage::getModel('core/email_template')->loadDefault('_addcomputers_makeoffer');
 
 		$name_from = Mage::getStoreConfig('trans_email/ident_general/name');
 		$email_from = Mage::getStoreConfig('trans_email/ident_general/email');

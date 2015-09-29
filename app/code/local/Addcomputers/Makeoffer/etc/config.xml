@@ -58,9 +58,14 @@
             <email>
                 <makeoffer>
                     <label>Make Offer</label>
-                    <file>makeoffer.html</file>
+                    <file>_addcomputers_makeoffer.html</file>
                     <type>html</type>
                 </makeoffer>
+                <rma>
+                    <label>Make Offer</label>
+                    <file>_addcomputers_rma.html</file>
+                    <type>html</type>
+                </rma>
             </email>
         </template>        
     </global>

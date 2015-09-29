@@ -1,5 +1,32 @@
+<script type="text/javascript" src="<?php echo $this->getSkinUrl(); ?>js/addcomputers/jquery.validate.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+	    jQuery("#dateRMA").datepicker({altFormat: "yyyy-mm-dd", dateFormat: "dd/mm/yy"});
+	    jQuery("#datePurchase").datepicker({altFormat: "yyyy-mm-dd", dateFormat: "dd/mm/yy"});
+		jQuery(document).on('click', '#rmaCHeck', function(){
+			if(jQuery(this).is(':checked'))
+				jQuery('.rmaForm').removeClass('hide');
+			else
+				jQuery('.rmaForm').addClass('hide');
+		});
+
+		jQuery(document).on('click', '#more-products', function(){
+			jQuery('.product').each(function(){
+				if (jQuery(this).hasClass('hide'))
+				{
+					jQuery(this).find('input').removeAttr('disabled');
+					jQuery(this).find('textarea').removeAttr('disabled');
+					jQuery(this).removeClass('hide');
+					return false;
+				}
+			});
+		});
+
+		jQuery('form#rmaBigForm').validate();
+	})
+</script>
 <br />
-<div class="rmaForm hide-me" style="display: block;">
+<div class="rmaForm hide">
 	<span style="color: #ff0000;"><strong>Our warranty is strictly 6 months from date of INVOICE unless specific to order. Batteries and consumables are only covered from 30 days from invoice date.</strong></span><p></p>
 	<p>Once your RMA has been processed and you have received your RMA number, you will be required to return the goods back to us <strong>within 5 working days of the date issued</strong>. In the event that a replacement is unavailable, a refund will be issued. <strong>An RMA will not be processed without a completed form. All sections must be completed to obtain an RMA number</strong></p>
 	<p><span style="color: #ff0000;"><strong>A 30% restocking fee will apply if ADD has accepted restock, for the following if applicable:</strong></span></p>
@@ -11,39 +38,32 @@
 	<p>&nbsp;<br></p>
 	<div lang="en-US" dir="ltr" id="wpcf7-f110-p108-o2" class="wpcf7">
 		<div class="screen-reader-response"></div>
-		<form novalidate="novalidate" enctype="multipart/form-data" class="wpcf7-form" method="post" action="/rma/#wpcf7-f110-p108-o2" name="">
-			<div style="display: none;">
-				<input type="hidden" value="110" name="_wpcf7">
-				<input type="hidden" value="4.0.1" name="_wpcf7_version">
-				<input type="hidden" value="en_US" name="_wpcf7_locale">
-				<input type="hidden" value="wpcf7-f110-p108-o2" name="_wpcf7_unit_tag">
-				<input type="hidden" value="fd6a90993f" name="_wpnonce">
-			</div>
+		<form enctype="multipart/form-data" id="rmaBigForm" method="post" action="/makeoffer/rma/send">
 			<div class="form-list">
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="field">
 		                    <label>Company Name*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" title="Company" value="" size="40" name="company_name">
+		                        <input type="text" class="input-text form-control" value="" name="company_name" required>
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Contact Name*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" title="Company" value="" size="40" name="contact_name">
+		                        <input type="text" class="input-text form-control" value="" name="contact_name" required>
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Contact Telephone Number*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" title="Company" value="" size="40" name="contact_phone">
+		                        <input type="text" class="input-text form-control" value="" name="contact_phone" required>
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Contact Email*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" title="Company" value="" size="40" name="contact_email">
+		                        <input type="email" class="input-text form-control" value="" name="contact_email" required>
 		                    </div>
 		                </div>
 		            </div>
@@ -51,55 +71,55 @@
 						<div class="field">
 		                    <label>Customer Purchase Order Reference Number*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" title="Company" value="" size="40" name="ref_no">
+		                        <input type="text" class="input-text form-control" value="" name="ref_no" required>
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Invoice Number</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" title="Company" value="" size="40" name="invoice_no">
+		                        <input type="text" class="input-text form-control" value="" name="invoice_no">
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Date RMA Raised*</label>
 		                    <div class="input-box">
-		                        <input type="text" id="dateRMA" placeholder="dd/mm/yyyy" class="input-text form-control" title="Company" value="" size="40" name="date_rma">
+		                        <input type="text" id="dateRMA" placeholder="dd/mm/yyyy" class="input-text form-control" value="" name="date_rma" required>
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Date of Purchase*</label>
 		                    <div class="input-box">
-		                        <input type="text" id="datePurchase" placeholder="dd/mm/yyyy" class="input-text form-control" title="Company" value="" size="40" name="date_purchase">
+		                        <input type="text" id="datePurchase" placeholder="dd/mm/yyyy" class="input-text form-control" value="" name="date_purchase" required>
 		                    </div>
 		                </div>
 		            </div>
 	            </div>
                 <br />
-				<div class="row product-1">
+				<div class="row product">
 					<p class="rmaProduct">Product #1</p>
 					<div class="col-sm-6">
 						<div class="field">
 		                    <label>Part Number*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="part_number[]">
+		                        <input type="text" class="input-text form-control" value="" name="part_number[1]" required>
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Quantity*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="quantity[]">
+		                        <input type="text" class="input-text form-control" value="" name="quantity[1]" number="true" required>
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Serial Number</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="serial_number[]">
+		                        <input type="text" class="input-text form-control" value="" name="serial_number[1]">
 		                    </div>
 		                </div>
 						<div class="field">
-		                    <label>Warranty Sticker Number</label>
+		                    <label>Warranty Sticker Number*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="warranty_sticker[]">
+		                        <input required type="text" minlength="6" maxlength="6" number="true" class="input-text form-control" value="" name="warranty_sticker[1]">
 		                    </div>
 		                </div>
 	                </div>
@@ -107,41 +127,41 @@
 						<div class="field">
 		                    <label>Reason for RMA* <br />(Please give as much information as possible)</label>
 		                    <div class="input-box">
-		                        <textarea class="input-text form-control" name="reason[]"></textarea>
+		                        <textarea class="input-text form-control" name="reason[1]" required></textarea>
 		                    </div>
 		                </div>
 						<div class="field">
 							<label for="exampleInputFile">Upload Image</label>
-							<div style="clear:both;"><input type="file" name="upload_img[]" id="exampleInputFile"></div>
+							<div style="clear:both;"><input type="file" name="upload_img[1]" id="exampleInputFile"></div>
 						</div>
 		            </div>
 				</div>
                 <br />
-				<div class="row product-2">
+				<div class="row product hide">
 					<p class="rmaProduct">Product #2</p>
 					<div class="col-sm-6">
 						<div class="field">
 		                    <label>Part Number*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="part_number[]">
+		                        <input type="text" disabled="disabled" class="input-text form-control" value="" name="part_number[2]" required>
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Quantity*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="quantity[]">
+		                        <input type="text" disabled="disabled" class="input-text form-control" value="" name="quantity[2]" number="true" required>
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Serial Number</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="serial_number[]">
+		                        <input type="text" disabled="disabled" class="input-text form-control" value="" name="serial_number[2]">
 		                    </div>
 		                </div>
 						<div class="field">
-		                    <label>Warranty Sticker Number</label>
+		                    <label>Warranty Sticker Number*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="warranty_sticker[]">
+		                        <input required type="text" disabled="disabled" minlength="6" maxlength="6" number="true" class="input-text form-control" value="" name="warranty_sticker[2]">
 		                    </div>
 		                </div>
 	                </div>
@@ -149,41 +169,41 @@
 						<div class="field">
 		                    <label>Reason for RMA* <br />(Please give as much information as possible)</label>
 		                    <div class="input-box">
-		                        <textarea class="input-text form-control" name="reason[]"></textarea>
+		                        <textarea class="input-text form-control" disabled="disabled" name="reason[2]" required></textarea>
 		                    </div>
 		                </div>
 						<div class="field">
 							<label for="exampleInputFile">Upload Image</label>
-							<div style="clear:both;"><input type="file" name="upload_img[]" id="exampleInputFile"></div>
+							<div style="clear:both;"><input type="file" name="upload_img[2]" id="exampleInputFile"></div>
 						</div>
 		            </div>
 				</div>
                 <br />
-				<div class="row product-3">
+				<div class="row product hide">
 					<p class="rmaProduct">Product #3</p>
 					<div class="col-sm-6">
 						<div class="field">
 		                    <label>Part Number*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="part_number[]">
+		                        <input type="text" disabled="disabled" class="input-text form-control" value="" name="part_number[3]" required>
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Quantity*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="quantity[]">
+		                        <input type="text" disabled="disabled" class="input-text form-control" value="" name="quantity[3]" number="true" required>
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Serial Number</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="serial_number[]">
+		                        <input type="text" disabled="disabled" class="input-text form-control" value="" name="serial_number[3]">
 		                    </div>
 		                </div>
 						<div class="field">
-		                    <label>Warranty Sticker Number</label>
+		                    <label>Warranty Sticker Number*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="warranty_sticker[]">
+		                        <input required type="text" disabled="disabled" minlength="6" maxlength="6" number="true" class="input-text form-control" value="" name="warranty_sticker[3]">
 		                    </div>
 		                </div>
 	                </div>
@@ -191,41 +211,41 @@
 						<div class="field">
 		                    <label>Reason for RMA* <br />(Please give as much information as possible)</label>
 		                    <div class="input-box">
-		                        <textarea class="input-text form-control" name="reason[]"></textarea>
+		                        <textarea disabled="disabled" class="input-text form-control" name="reason[3]" required></textarea>
 		                    </div>
 		                </div>
 						<div class="field">
 							<label for="exampleInputFile">Upload Image</label>
-							<div style="clear:both;"><input type="file" name="upload_img[]" id="exampleInputFile"></div>
+							<div style="clear:both;"><input type="file" name="upload_img[3]" id="exampleInputFile"></div>
 						</div>
 		            </div>
 				</div>
                 <br />
-				<div class="row product-4">
+				<div class="row product hide">
 					<p class="rmaProduct">Product #4</p>
 					<div class="col-sm-6">
 						<div class="field">
 		                    <label>Part Number*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="part_number[]">
+		                        <input type="text" disabled="disabled" class="input-text form-control" value="" name="part_number[4]" required>
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Quantity*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="quantity[]">
+		                        <input type="text" disabled="disabled" class="input-text form-control" value="" name="quantity[4]" number="true" required>
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Serial Number</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="serial_number[]">
+		                        <input type="text" disabled="disabled" class="input-text form-control" value="" name="serial_number[4]">
 		                    </div>
 		                </div>
 						<div class="field">
-		                    <label>Warranty Sticker Number</label>
+		                    <label>Warranty Sticker Number*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="warranty_sticker[]">
+		                        <input required type="text" disabled="disabled" minlength="6" maxlength="6" number="true" class="input-text form-control" value="" name="warranty_sticker[4]">
 		                    </div>
 		                </div>
 	                </div>
@@ -233,41 +253,41 @@
 						<div class="field">
 		                    <label>Reason for RMA* <br />(Please give as much information as possible)</label>
 		                    <div class="input-box">
-		                        <textarea class="input-text form-control" name="reason[]"></textarea>
+		                        <textarea disabled="disabled" class="input-text form-control" name="reason[4]" required></textarea>
 		                    </div>
 		                </div>
 						<div class="field">
 							<label for="exampleInputFile">Upload Image</label>
-							<div style="clear:both;"><input type="file" name="upload_img[]" id="exampleInputFile"></div>
+							<div style="clear:both;"><input type="file" name="upload_img[4]" id="exampleInputFile"></div>
 						</div>
 		            </div>
 				</div>
                 <br />
-				<div class="row product-5">
+				<div class="row product hide">
 					<p class="rmaProduct">Product #5</p>
 					<div class="col-sm-6">
 						<div class="field">
 		                    <label>Part Number*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="part_number[]">
+		                        <input type="text" disabled="disabled" class="input-text form-control" value="" name="part_number[5]" required>
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Quantity*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="quantity[]">
+		                        <input type="text" disabled="disabled" class="input-text form-control" value="" name="quantity[5]" number="true" required>
 		                    </div>
 		                </div>
 						<div class="field">
 		                    <label>Serial Number</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="serial_number[]">
+		                        <input type="text" disabled="disabled" class="input-text form-control" value="" name="serial_number[5]">
 		                    </div>
 		                </div>
 						<div class="field">
-		                    <label>Warranty Sticker Number</label>
+		                    <label>Warranty Sticker Number*</label>
 		                    <div class="input-box">
-		                        <input type="text" class="input-text form-control" value="" size="40" name="warranty_sticker[]">
+		                        <input required type="text" disabled="disabled" minlength="6" maxlength="6" number="true" class="input-text form-control" value="" name="warranty_sticker[5]">
 		                    </div>
 		                </div>
 	                </div>
@@ -275,12 +295,12 @@
 						<div class="field">
 		                    <label>Reason for RMA* <br />(Please give as much information as possible)</label>
 		                    <div class="input-box">
-		                        <textarea class="input-text form-control" name="reason[]"></textarea>
+		                        <textarea disabled="disabled" class="input-text form-control" name="reason[5]" required></textarea>
 		                    </div>
 		                </div>
 						<div class="field">
 							<label for="exampleInputFile">Upload Image</label>
-							<div style="clear:both;"><input type="file" name="upload_img[]" id="exampleInputFile"></div>
+							<div style="clear:both;"><input type="file" name="upload_img[5]" id="exampleInputFile"></div>
 						</div>
 		            </div>
 				</div>
@@ -293,19 +313,15 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-6 text-right">
-					<button class="button btn-proceed-checkout btn-checkout" type="button">
+					<button class="button btn-proceed-checkout btn-checkout" type="submit">
 						<span>
 							<span>Submit Form</span>
 						</span>
 					</button>				
 				</div>
 			</div>
-			<div class="wpcf7-response-output wpcf7-display-none"></div> 
+			<div class="wpcf7-response-output wpcf7-display-none"></div>
 		</form>
 	</div>
 	<p></p>
 </div>
-<script>
-    jQuery("#dateRMA").datepicker({altFormat: "yyyy-mm-dd", dateFormat: "dd/mm/yy"});
-    jQuery("#datePurchase").datepicker({altFormat: "yyyy-mm-dd", dateFormat: "dd/mm/yy"});
-</script>
