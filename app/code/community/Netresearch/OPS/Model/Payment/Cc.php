@@ -258,14 +258,14 @@ class Netresearch_OPS_Model_Payment_Cc extends Netresearch_OPS_Model_Payment_Dir
      */
     public function isAvailable($quote = null)
     {
-        if (!$quote->getItemsCount() > 0 && $this->getDataHelper()->isAdminSession()) {
+        if (!is_null($quote) && !$quote->getItemsCount() > 0 && $this->getDataHelper()->isAdminSession()) {
             /* Disable payment method in backend as long as there are no items in quote to
             *  avoid problems with alias creation in EE1.12 & EE1.13
             */
             return false;
-        } else {
-            return parent::isAvailable($quote);
         }
+     
+        return parent::isAvailable($quote);
     }
 }
 

@@ -35,7 +35,15 @@
             <action ifconfig="youamaajaxlogin/settings/power" method="addCss">
                 <stylesheet>css/youama/ajaxlogin/ajaxlogin.css</stylesheet>
             </action>
-            <action ifconfig="youamaajaxlogin/settings/power" method="addItem">
+<!--             <action ifconfig="youamaajaxlogin/settings/jquery" method="addItem">
+                <type>skin_js</type>
+                <script>js/youama/ajaxlogin/jquery-1-11-1.js</script>
+            </action>
+            <action ifconfig="youamaajaxlogin/settings/jqueryui" method="addItem">
+                <type>skin_js</type>
+                <script>js/youama/ajaxlogin/jquery-ui-1-10-4.js</script>
+            </action>
+ -->            <action ifconfig="youamaajaxlogin/settings/power" method="addItem">
                 <type>skin_js</type>
                 <script>js/youama/ajaxlogin/ajaxlogin.js</script>
             </action>

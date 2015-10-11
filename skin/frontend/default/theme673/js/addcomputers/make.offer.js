@@ -177,6 +177,7 @@ function makeTheOffer(thisPrice, thisQuantity)
         // if all ok show the add to cart button
         else
         {
+            jQuery('.youama-ajaxlogin-error').hide();
             jQuery('.youama-offer-user-window input').attr('disabled', 'disabled');
             jQuery('.youama-' + thisUser + '-window .youama-ajaxlogin-success').fadeIn();
             jQuery('.youama-makeoffer-button').hide();

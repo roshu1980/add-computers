@@ -68,7 +68,7 @@ Default layout, loads most of the pages
                 <action method="addItem"><type>skin_js</type><name>js/scripts.js</name><params/></action>
                 <action method="addItem"><type>skin_js</type><name>js/addcomputers/make.offer.js</name><params/></action>
 
-                <action method="addItem"><type>skin_js</type><name>js/jquery-ui.js</name><params/></action>
+                <!-- <action method="addItem"><type>skin_js</type><name>js/jquery-ui.js</name><params/></action> -->
 
                 <block type="page/js_cookie" name="js_cookies" template="page/js/cookie.phtml"/>
                 <action method="addCss"><stylesheet>css/font-awesome.css</stylesheet></action>
