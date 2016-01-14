@@ -1,3 +1,6 @@
+.header-side .header-buttons {margin-bottom: 10px;}
+.header-side .font-24 { font-size: 24px; }
+.top-10 { margin-top: 10px; }
 .header-modal {
     background: #fff none repeat scroll 0 0;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.18);

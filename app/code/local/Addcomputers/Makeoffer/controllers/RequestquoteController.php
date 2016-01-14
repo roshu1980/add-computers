@@ -30,7 +30,7 @@ class Addcomputers_Makeoffer_RequestquoteController extends Mage_Core_Controller
 			$emailTemplateVariables['company_name'] = $postParams['company_name'];
 			$emailTemplateVariables['contact_name'] = $postParams['contact_name'];
 			$emailTemplateVariables['telephone'] = $postParams['telephone'];
-			$emailTemplateVariables['email'] = $postParams['email'];
+			$emailTemplateVariables['cemail'] = $postParams['email'];
 
 			foreach ($postParams['product_code'] as $key => $value) 
 			{
