@@ -1,0 +1,308 @@
+<?xml version="1.0"?>
+<config>
+  
+    <tabs>
+        <cmsmart_tab module="dailydeal">
+            <label>CsmMart Extensions</label>
+            <sort_order>100</sort_order>
+        </cmsmart_tab>
+    </tabs>
+	
+    <sections>
+        <dailydeal translate="label" module="dailydeal">
+            <class>separator-top</class>
+            <label>DailyDeal</label>
+            <tab>cmsmart_tab</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+				<cmsmart translate="label">
+                    <label>License</label>                   
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[<p id="license-messages"></p>]]>
+                    <![CDATA[
+                    <h5 style="padding-bottom: 10px; font-family: Arial">MAGENTO DailyDeal Extensions</h5>
+                   	
+                    <div style="padding-bottom: 10px"><p style="float: left; width: 205px">Version</p><p>1.0.0</p></div>
+                    <div style="padding-bottom: 10px"><p style="float: left; width: 205px">License</p><p>GPL</p></div>
+                    <div><p style="float: left; width: 205px">Copyright</p><p>(c) 2013-2014 Cmsmart.net</p></div>
+                    ]]>  
+                    </comment>
+                    <fields>                    	
+                        <license_skuproduct translate="label comment">
+                            <label>Sku Product</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><your_first_field_name>1</your_first_field_name></depends>
+                        </license_skuproduct>     
+                        <license_key translate="label comment">
+                            <label>License</label>
+                            <comment>
+                            <![CDATA[Please fill the license key, more information on <a href="http://cmsmart.net/license" target="_blank" style='text-decoration: none'><font color="#218bca">http://cmsmart.net/license</font></a>]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </license_key> 
+						<license_domain translate="label comment">
+                            <label>Domain</label>
+                            <comment>
+                            <![CDATA[Example: <a href="#" target="_blank" style='text-decoration: none'><font color="#218bca">http://abc.com</font></a> or <a href="#" target="_blank" style='text-decoration: none'><font color="#218bca">http://sub.abc.com</font></a>]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </license_domain> 
+                    </fields>
+                </cmsmart>
+                <general translate="label" module="dailydeal">
+                    <label>Dailydeal Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>					
+						<enableview translate="label">
+                            <label>Enable Dailydeal</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enableview>               
+						
+                        <daysdailydeal translate="label">
+                            <label>days of today deal</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[default is 1]]>
+							</comment>
+                        </daysdailydeal>
+								
+                        <availablelimit translate="label">
+                            <label>Available limit</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[default is 5,10,15,20,All]]>
+							</comment>
+                        </availablelimit>
+					
+						<showtodailytab translate="label">
+                            <label>Enable TodayDeal Tab</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showtodailytab>               
+							
+						<showcommingdailytab translate="label">
+                            <label>Enable Comming Deal Tab</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showcommingdailytab>               
+									
+						<showexpireddailytab translate="label">
+                            <label>Enable Expired Deal Tab</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showexpireddailytab>               
+						<showdayslider translate="label">
+                            <label>Show the Slider in the Dailydeal page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showdayslider>              
+						<showdaysliderupcoming translate="label">
+                            <label>Show the Slider in the Upcoming page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showdaysliderupcoming>               
+											
+						<showtodaydealleftblock translate="label">
+                            <label>Show Todaydeal Block on the left sidebar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showtodaydealleftblock>               
+														
+						<showtodaydealrightblock translate="label">
+                            <label>Show Todaydeal Block on the right sidebar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showtodaydealrightblock> 
+						
+						<showdailydealleftblock translate="label">
+                            <label>Show Dailydeal Block on the left sidebar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showdailydealleftblock>               
+						
+						<showdailydealrightblock translate="label">
+                            <label>Show Dailydeal Block on the right sidebar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showdailydealrightblock>               
+													
+						<showfeatureddealleftblock translate="label">
+                            <label>Show Featured Deal Block on the left sidebar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showfeatureddealleftblock>               
+													
+						<showfeatureddealrightblock translate="label">
+                            <label>Show Featured Block on the right sidebar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>19</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showfeatureddealrightblock>               
+							
+						<showfeatureddealcenterblock translate="label">
+                            <label>Show Featured deal on the Center content block</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>27</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showfeatureddealcenterblock>  
+									
+						<maximumslider translate="label">
+                            <label>The maximum value of the slider</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>29</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </maximumslider>  
+									
+						<minimumslider translate="label">
+                            <label>The minimum value of the slider</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>28</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </minimumslider>  
+						
+						<colortimeleft1 translate="label">
+                            <label>Time Left Background Color 1</label>
+                             <comment>
+                                <![CDATA[Default: #DCE9F2]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>dailydeal/adminhtml_system_config_form_field_color</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </colortimeleft1>
+						
+						<colortimeleft2 translate="label">
+                            <label>Time Left Background Color 2</label>
+                             <comment>
+                                <![CDATA[Default: #FEFEFE]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>dailydeal/adminhtml_system_config_form_field_color</frontend_model>
+                            <sort_order>32</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </colortimeleft2>	
+						
+						<boxshadowcolortimeleft translate="label">
+                            <label>Time Left Boxshadow Background Color</label>
+                             <comment>
+                                <![CDATA[Default: #555555]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>dailydeal/adminhtml_system_config_form_field_color</frontend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </boxshadowcolortimeleft>	
+						
+                    </fields>
+					
+				</general>
+				<info translate="label">
+                        <label>Cmsmart</label>
+                        <frontend_type>text</frontend_type> 
+                        <sort_order>100</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store> 
+                        <comment>* Name: Magento extensions DailyDeal<![CDATA[<br/>]]>
+* Author: The Cmsmart Development Team <![CDATA[<br/>]]>
+* Date Created: 28/11/2013<![CDATA[<br/>]]>
+* Websites: <![CDATA[<a href="http://www.cmsmart.net" target="_blank" style='text-decoration: none'><font color="#EF1313">http://www.cmsmart.net</font></a>.<br/>]]>
+* Technical Support: Forum - <![CDATA[<a href="http://www.cmsmart.net/support" target="_blank" style='text-decoration: none'><font color="#EF1313">http://www.cmsmart.net/support</font></a>.<br/>]]>
+* GNU General Public License v3 (<![CDATA[<a href="http://opensource.org/licenses/GPL-3.0" target="_blank" style='text-decoration: none'><font color="#EF1313">http://opensource.org/licenses/GPL-3.0</font></a>).<br/>]]>
+* Copyright © 2011-2013 Cmsmart.net. All Rights Reserved.<![CDATA[<br/>]]> </comment>  
+                </info>
+						
+            </groups>
+        </dailydeal>
+    </sections>
+</config>

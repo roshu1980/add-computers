@@ -1,0 +1,274 @@
+<?xml version="1.0" ?>
+<!--
+	Descriptions
+-->
+
+<config>
+	<modules>
+		<Cmsmart_Dailydeal>
+			<version>1.0.0</version>
+		</Cmsmart_Dailydeal>
+	</modules>
+	
+	<global>
+
+		<models>
+			<dailydeal>
+				<class>Cmsmart_Dailydeal_Model</class>
+				<resourceModel>dailydeal_mysql4</resourceModel>
+			</dailydeal>
+			
+			<dailydeal_mysql4>
+                <class>Cmsmart_Dailydeal_Model_Mysql4</class>
+                <entities>
+                    <relatedproductdailydeal>
+                        <table>cmsmart_dailydeal_relatedproduct</table>
+                    </relatedproductdailydeal>
+					
+					<dailydealproducts>
+                        <table>cmsmart_dailydeal_products</table>
+                    </dailydealproducts>
+					
+                    <dailydeal>
+                        <table>cmsmart_dailydeal</table>
+                    </dailydeal>
+					
+	                <store>
+                        <table>cmsmart_dailydeal_store</table>
+                    </store>
+					
+                </entities>
+            </dailydeal_mysql4>
+		</models>
+
+		<helpers>
+			<dailydeal>
+				<class>Cmsmart_Dailydeal_Helper</class>
+			</dailydeal>
+		</helpers>
+		
+		<blocks>
+			<dailydeal>
+				<class>Cmsmart_Dailydeal_Block</class>
+			</dailydeal>
+			<!-- 
+			<adminhtml>
+				<rewrite>
+					<catalog_category_tabs>Cmsmart_Dailydeal_Block_Catalogtabs</catalog_category_tabs>
+					
+					<catalog_product_edit_tabs>Cmsmart_Dailydeal_Block_Rewrite_Producttabs</catalog_product_edit_tabs>
+					
+				</rewrite>
+			</adminhtml>
+			 -->
+		</blocks>
+		
+        <events>
+            <catalog_product_collection_load_after>
+                <observers>
+                    <Cmsmart_Dailydeal_Model_Observer>
+                        <type>singleton</type>
+                        <class>Cmsmart_Dailydeal_Model_Observer</class>
+                        <method>collectionloadafter</method>
+                    </Cmsmart_Dailydeal_Model_Observer>
+                </observers>
+            </catalog_product_collection_load_after>
+			
+			        
+            <catalog_product_get_final_price>
+                <observers>
+                    <Cmsmart_Dailydeal_Model_Observer>
+                        <type>singleton</type>
+                        <class>Cmsmart_Dailydeal_Model_Observer</class>
+                        <method>getfinalprice</method>
+                    </Cmsmart_Dailydeal_Model_Observer>
+                </observers>
+            </catalog_product_get_final_price>
+			
+            <sales_model_service_quote_submit_before>
+                <observers>
+                    <Cmsmart_Dailydeal_Model_Observer>
+                        <class>Cmsmart_Dailydeal_Model_Observer</class>
+                        <method>saveorder</method>
+                    </Cmsmart_Dailydeal_Model_Observer>
+                </observers>
+            </sales_model_service_quote_submit_before>
+			
+            <checkout_cart_save_after>
+                <observers>
+                    <Cmsmart_Dailydeal_Model_Observer>
+                        <type>singleton</type>
+                        <class>Cmsmart_Dailydeal_Model_Observer</class>
+                        <method>update_items</method>
+                    </Cmsmart_Dailydeal_Model_Observer>
+                </observers>
+            </checkout_cart_save_after>
+
+            <controller_action_predispatch_checkout_cart_add>
+                <observers>
+                    <Cmsmart_Dailydeal_Model_Observer>
+                        <type>singleton</type>
+                        <class>Cmsmart_Dailydeal_Model_Observer</class>
+                        <method>addproduct</method>
+                    </Cmsmart_Dailydeal_Model_Observer>
+                </observers>
+            </controller_action_predispatch_checkout_cart_add>
+
+            <order_cancel_after>
+                <observers>
+                    <Cmsmart_Dailydeal_Model_Observer>
+                        <type>singleton</type>
+                        <class>Cmsmart_Dailydeal_Model_Observer</class>
+                        <method>orderCancelAfter</method>
+                    </Cmsmart_Dailydeal_Model_Observer>
+                </observers>
+            </order_cancel_after>
+			
+			
+         </events>
+		
+		 
+        <resources>
+			<dailydeal_setup>
+				<setup>
+					<module>Cmsmart_Dailydeal</module>
+				</setup>
+				<connection>
+                    <use>core_setup</use>
+                </connection>
+			</dailydeal_setup>
+			
+			<dailydeal_read>
+				<connection>
+                    <use>core_read</use>
+				</connection>
+			</dailydeal_read>
+			
+			<dailydeal_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</dailydeal_write>
+        </resources>
+
+	</global>
+	
+    <admin>
+        <routers>
+            <dailydeal_admin>
+                <use>admin</use>
+                <args>
+                    <module>Cmsmart_Dailydeal</module>
+                    <frontName>dailydeal_admin</frontName>
+                </args>
+            </dailydeal_admin>
+        </routers>
+    </admin>
+	
+    <adminhtml>
+        <translate>
+            <modules>
+                <Cmsmart_Dailydeal>
+                    <files>
+                        <default>Cmsmart_Dailydeal.csv</default>
+                    </files>
+                </Cmsmart_Dailydeal>
+            </modules>
+        </translate>		
+        <layout>
+            <updates>
+                <dailydeal module="Cmsmart_Dailydeal">
+                    <file>cmsmart/cmsmart_dailydeal.xml</file>
+                </dailydeal>
+            </updates>
+        </layout>
+    </adminhtml>	
+	
+	<frontend>
+		<routers>
+			<dailydeal>
+				<use>standard</use>
+				<args>
+					<module>Cmsmart_Dailydeal</module>
+					<frontName>dailydeal</frontName>
+				</args>
+			</dailydeal>
+			
+			<todaydeal>
+				<use>standard</use>
+				<args>
+					<module>Cmsmart_Dailydeal</module>
+					<frontName>todaydeal</frontName>
+				</args>
+			</todaydeal>
+			
+			<upcomingdeal>
+				<use>standard</use>
+				<args>
+					<module>Cmsmart_Dailydeal</module>
+					<frontName>upcomingdeal</frontName>
+				</args>
+			</upcomingdeal>
+			
+			<misseddeal>
+				<use>standard</use>
+				<args>
+					<module>Cmsmart_Dailydeal</module>
+					<frontName>misseddeal</frontName>
+				</args>
+			</misseddeal>
+			
+		</routers>
+		
+        <translate>
+            <modules>
+                <Cmsmart_Dailydeal>
+                    <files>
+                        <default>Cmsmart_Dailydeal.csv</default>
+                    </files>
+                </Cmsmart_Dailydeal>
+            </modules>
+        </translate>
+		
+        <layout>
+			<updates>
+			  <dailydeal module="Cmsmart_Dailydeal">
+				  <file>cmsmart/cmsmart_dailydeal.xml</file>
+			  </dailydeal>
+			</updates>			  
+        </layout>
+
+	</frontend>
+	<!--
+	<adminhtml>
+	</adminhtml>
+	-->
+	<default>
+		<dailydeal>
+			<cmsmart>
+				<license_skuproduct>MG16</license_skuproduct>
+			</cmsmart>
+		   <general>
+				<enableview>1</enableview>
+				<colortimeleft1>#DCE9F2</colortimeleft1>
+				<colortimeleft2>#FEFEFE</colortimeleft2>
+				<boxshadowcolortimeleft>#555555</boxshadowcolortimeleft>
+				<daysdailydeal>20</daysdailydeal>
+				<availablelimit>5,10,15,20,All</availablelimit>
+				<showtodailytab>1</showtodailytab>
+				<showcommingdailytab>1</showcommingdailytab>
+				<showexpireddailytab>1</showexpireddailytab>
+				<showdayslider>0</showdayslider>
+				<minimumslider>0</minimumslider>
+				<maximumslider>30</maximumslider>
+				<showtodaydealleftblock>1</showtodaydealleftblock>
+				<showtodaydealrightblock>1</showtodaydealrightblock>
+				<showdailydealleftblock>1</showdailydealleftblock>
+				<showdailydealrightblock>1</showdailydealrightblock>
+				<showfeatureddealcenterblock>1</showfeatureddealcenterblock>
+				<showfeatureddealleftblock>1</showfeatureddealleftblock>
+				<showfeatureddealrightblock>1</showfeatureddealrightblock>
+			</general>			
+		</dailydeal>
+	</default>
+</config>

@@ -1,0 +1,435 @@
+<script type="text/javascript" src="<?php echo $this->getSkinUrl(); ?>js/addcomputers/jquery.validate.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery(document).on('click', '#more-products', function(){
+			jQuery('.product').each(function(){
+				if (jQuery(this).hasClass('hide'))
+				{
+					jQuery(this).find('input').removeAttr('disabled');
+					jQuery(this).find('select').removeAttr('disabled');
+					jQuery(this).removeClass('hide');
+					return false;
+				}
+			});
+			if (jQuery('.product.hide').length == 0)
+				jQuery('.addProdLink').addClass("hide");
+		});
+		jQuery('form#rmaBigForm').validate();
+	})
+</script>
+<div class="row" style="margin-left: 0;margin-right:0; margin-top: 30px;">
+	<h3>Please enter your contact information and product details(up to 10) below:</h3>
+</div>
+<div style="margin-top: 50px;">
+	<form enctype="multipart/form-data" id="rmaBigForm" method="post" action="/makeoffer/requestquote/send">
+		<div class="form-list">
+			<div class="row" style="margin-left: 0; margin-right:0;">
+				<p class="rmaProduct">Contact Information</p>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Company Name*</label>
+	                    <div class="input-box">
+	                        <input type="text" class="input-text form-control" value="" name="company_name" required>
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Contact Name*</label>
+	                    <div class="input-box">
+	                        <input type="text" class="input-text form-control" value="" name="contact_name" required>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-sm-6">
+					<div class="field">
+	                    <label>Email*</label>
+	                    <div class="input-box">
+	                        <input type="text" class="input-text form-control" value="" name="email" required>
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Telephone*</label>
+	                    <div class="input-box">
+	                        <input type="text" class="input-text form-control" value="" name="telephone" required>
+	                    </div>
+	                </div>
+	            </div>
+            </div>
+            <br />
+			<div class="row product" style="margin-left: 0;margin-right:0;">
+				<p class="rmaProduct">Product #1</p>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Product Code*</label>
+	                    <div class="input-box">
+	                        <input type="text" class="input-text form-control" value="" name="product_code[1]" required>
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Description</label>
+	                    <div class="input-box">
+	                        <input type="text" class="input-text form-control" value="" name="description[1]">
+	                    </div>
+	                </div>
+                </div>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Quantity</label>
+	                    <div class="input-box">
+	                        <input type="text" class="input-text form-control" value="" name="quantity[1]" number="true">
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Condition</label>
+	                    <div class="input-box">
+	                        <select class="input-text form-control" name="condition[1]">
+		                        <option>New Sealed</option>
+		                        <option>New Open Box</option>
+		                        <option>Refurbished</option>
+	                        </select>
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+			<div class="row product hide" style="margin-left: 0;margin-right:0;">
+	            <br />
+				<p class="rmaProduct">Product #2</p>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Product Code*</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="product_code[2]" required>
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Description</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="description[2]">
+	                    </div>
+	                </div>
+                </div>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Quantity</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="quantity[2]" number="true">
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Condition</label>
+	                    <div class="input-box">
+	                        <select disabled="disabled" class="input-text form-control" name="condition[2]">
+		                        <option>New Sealed</option>
+		                        <option>New Open Box</option>
+		                        <option>Refurbished</option>
+	                        </select>
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+			<div class="row product hide" style="margin-left: 0;margin-right:0;">
+	            <br />
+				<p class="rmaProduct">Product #3</p>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Product Code*</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="product_code[3]" required>
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Description</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="description[3]">
+	                    </div>
+	                </div>
+                </div>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Quantity</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="quantity[3]" number="true">
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Condition</label>
+	                    <div class="input-box">
+	                        <select disabled="disabled" class="input-text form-control" name="condition[3]">
+		                        <option>New Sealed</option>
+		                        <option>New Open Box</option>
+		                        <option>Refurbished</option>
+	                        </select>
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+			<div class="row product hide" style="margin-left: 0;margin-right:0;">
+	            <br />
+				<p class="rmaProduct">Product #4</p>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Product Code*</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="product_code[4]" required>
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Description</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="description[4]">
+	                    </div>
+	                </div>
+                </div>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Quantity</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="quantity[4]" number="true">
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Condition</label>
+	                    <div class="input-box">
+	                        <select disabled="disabled" class="input-text form-control" name="condition[4]">
+		                        <option>New Sealed</option>
+		                        <option>New Open Box</option>
+		                        <option>Refurbished</option>
+	                        </select>
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+			<div class="row product hide" style="margin-left: 0;margin-right:0;">
+	            <br />
+				<p class="rmaProduct">Product #5</p>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Product Code*</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="product_code[5]" required>
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Description</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="description[5]">
+	                    </div>
+	                </div>
+                </div>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Quantity</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="quantity[5]" number="true">
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Condition</label>
+	                    <div class="input-box">
+	                        <select disabled="disabled" class="input-text form-control" name="condition[5]">
+		                        <option>New Sealed</option>
+		                        <option>New Open Box</option>
+		                        <option>Refurbished</option>
+	                        </select>
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+			<div class="row product hide" style="margin-left: 0;margin-right:0;">
+	            <br />
+				<p class="rmaProduct">Product #6</p>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Product Code*</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="product_code[6]" required>
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Description</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="description[6]">
+	                    </div>
+	                </div>
+                </div>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Quantity</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="quantity[6]" number="true">
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Condition</label>
+	                    <div class="input-box">
+	                        <select disabled="disabled" class="input-text form-control" name="condition[6]">
+		                        <option>New Sealed</option>
+		                        <option>New Open Box</option>
+		                        <option>Refurbished</option>
+	                        </select>
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+			<div class="row product hide" style="margin-left: 0;margin-right:0;">
+	            <br />
+				<p class="rmaProduct">Product #7</p>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Product Code*</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="product_code[7]" required>
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Description</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="description[7]">
+	                    </div>
+	                </div>
+                </div>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Quantity</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="quantity[7]" number="true">
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Condition</label>
+	                    <div class="input-box">
+	                        <select disabled="disabled" class="input-text form-control" name="condition[7]">
+		                        <option>New Sealed</option>
+		                        <option>New Open Box</option>
+		                        <option>Refurbished</option>
+	                        </select>
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+			<div class="row product hide" style="margin-left: 0;margin-right:0;">
+	            <br />
+				<p class="rmaProduct">Product #8</p>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Product Code*</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="product_code[8]" required>
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Description</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="description[8]">
+	                    </div>
+	                </div>
+                </div>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Quantity</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="quantity[8]" number="true">
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Condition</label>
+	                    <div class="input-box">
+	                        <select disabled="disabled" class="input-text form-control" name="condition[8]">
+		                        <option>New Sealed</option>
+		                        <option>New Open Box</option>
+		                        <option>Refurbished</option>
+	                        </select>
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+			<div class="row product hide" style="margin-left: 0;margin-right:0;">
+	            <br />
+				<p class="rmaProduct">Product #9</p>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Product Code*</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="product_code[9]" required>
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Description</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="description[9]">
+	                    </div>
+	                </div>
+                </div>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Quantity</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="quantity[9]" number="true">
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Condition</label>
+	                    <div class="input-box">
+	                        <select disabled="disabled" class="input-text form-control" name="condition[9]">
+		                        <option>New Sealed</option>
+		                        <option>New Open Box</option>
+		                        <option>Refurbished</option>
+	                        </select>
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+			<div class="row product hide" style="margin-left: 0;margin-right:0;">
+	            <br />
+				<p class="rmaProduct">Product #10</p>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Product Code*</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="product_code[10]" required>
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Description</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="description[10]">
+	                    </div>
+	                </div>
+                </div>
+				<div class="col-sm-6">
+					<div class="field">
+	                    <label>Quantity</label>
+	                    <div class="input-box">
+	                        <input disabled="disabled" type="text" class="input-text form-control" value="" name="quantity[10]" number="true">
+	                    </div>
+	                </div>
+					<div class="field">
+	                    <label>Condition</label>
+	                    <div class="input-box">
+	                        <select disabled="disabled" class="input-text form-control" name="condition[10]">
+		                        <option>New Sealed</option>
+		                        <option>New Open Box</option>
+		                        <option>Refurbished</option>
+	                        </select>
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+		</div>
+        <br />
+		<div class="row addProdLink" style="margin-left: 0;margin-right:0;">
+			<div class="col-sm-6 text-left">
+				<p class="switch-window" id="more-products">+ Add Product</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 text-right">
+				<button class="button btn-proceed-checkout btn-checkout" type="submit">
+					<span>
+						<span>Submit Form</span>
+					</span>
+				</button>				
+			</div>
+		</div>
+	</form>
+	<p></p>
+</div>

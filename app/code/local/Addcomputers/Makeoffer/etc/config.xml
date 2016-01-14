@@ -66,6 +66,11 @@
                     <file>_addcomputers_rma.html</file>
                     <type>html</type>
                 </rma>
+                <requestquote>
+                    <label>Request Quote</label>
+                    <file>_addcomputers_requestquote.html</file>
+                    <type>html</type>
+                </requestquote>
             </email>
         </template>        
     </global>

@@ -1,0 +1,83 @@
+<?php
+	$title_day = '';
+	$dealcf = Mage::registry('dealcf');
+	$general = $dealcf['default']['general'];
+	$show = array('today' => 0, 'comming' => 0, 'missed' => 0, 'dayslider' => 0, 'showdaysliderupcoming' => 0);
+	
+	if(@$general['showtodailytab']) $show['today'] = 1;
+	if(@$general['showcommingdailytab']) $show['comming'] = 1;
+	if(@$general['showexpireddailytab']) $show['missed'] = 1;
+	if(@$general['showdayslider']) $show['dayslider'] = 1;
+	if(@$general['showdaysliderupcoming']) $show['showdaysliderupcoming'] = 1;
+	$min = @$general['minimumslider']?$general['minimumslider']:0;
+	$max = @$general['maximumslider']?$general['maximumslider']:30;
+
+?>
+
+<?php
+if(($show['dayslider'] && $dealcf['dealtype'] == 2) || ($show['showdaysliderupcoming'] && $dealcf['dealtype'] == 3)){
+	if(!in_array(@$dealcf['dealtype'], array(1,4))) {
+
+	switch($dealcf['dealtype']){
+		case 2:
+			$title_day = $this->__('DAILYDEAL_DAY_DAILYDEAL_FROM_TO');
+			break;
+		case 3:
+			$title_day = $this->__('DAILYDEAL_DAY_COMMING_FROM_TO');
+			break;
+		case 4:
+			$title_day = $this->__('DAILYDEAL_DAY_EXPIRED_FROM_TO');
+			break;
+			
+	}
+	?>
+
+	<?php		
+		$from = @$_GET['from']?(int)@$_GET['from']:$min;
+		$to = @$_GET['to']?(int)@$_GET['to']:$max;
+
+	?>
+	<div class="dailydeal-select-days" style="clear:both;">
+		<div id="dailydea-day" class="dailydeal-slider">
+			<div class="handle"></div>
+			<div class="handle"></div>
+		</div>			
+			
+		<div class="dailydeal-slider-day dailydeal-slider-day-from"><?php echo $min; ?> <?php echo $min < 2 ? $this->__('day'):$this->__('days'); ?></div>
+		<div class="dailydeal-slider-day dailydeal-slider-day-to"><?php echo $max; ?> <?php echo $max < 2 ? $this->__('day'):$this->__('days'); ?></div>
+
+		<div class="dailydeal-slider-day-range">
+			<?php echo $title_day; ?>
+			<span id="dailydea-day-from-slider"><?php echo $from; ?></span> - <span id="dailydea-day-to-slider"><?php echo $to; ?></span> <?php echo $to < 2 ? $this->__('day'):$this->__('days'); ?>
+		</div>
+		<input type="hidden" class="dailydeal-slider-param" value="dailydea-day,<?php echo $from ?>,<?php echo $to ?>,<?php echo $min ?>,<?php echo $max ?>" />
+		
+	</div>
+	<script type="text/javascript">
+		runsliderdeal();
+	</script>
+
+	<?php } ?>
+
+<?php } ?>
+
+
+<?php if(@$show['missed'] || @$show['comming'] || @$show['today']){ ?>
+
+<div class="dailydeal_menutop">
+	<?php if(@$show['today']){ ?>
+	<a href="<?php echo $this->getBaseUrl();?>todaydeal" <?php if(@$dealcf['dealtype'] == 1){ ?> class="activedealmenu" <?php } ?>  title="<?php echo $this->__('Today deals');?>" ><?php echo $this->__('Today deal');?></a> | 
+	<?php } ?>
+	
+	<?php if(count($show) > 1){ ?>
+		<a  <?php if(@$dealcf['dealtype'] == 2){ ?> class="activedealmenu" <?php } ?> href="<?php echo $this->getBaseUrl();?>dailydeal" title="<?php echo $this->__('Daily deals');?>" ><?php echo $this->__('Daily deal');?></a> | 
+	<?php } ?>
+	
+	<?php if(@$show['comming']){ ?>
+		<a  <?php if(@$dealcf['dealtype'] == 3){ ?> class="activedealmenu" <?php } ?> href="<?php echo $this->getBaseUrl();?>upcomingdeal " title="<?php echo $this->__('Upcoming Deals ');?>" ><?php echo $this->__('Upcoming Deals ');?></a> | 
+	<?php } ?>	
+	<?php if(@$show['missed']){ ?>
+		<a  <?php if(@$dealcf['dealtype'] == 4){ ?> class="activedealmenu" <?php } ?> href="<?php echo $this->getBaseUrl();?>misseddeal" title="<?php echo $this->__('You have missed');?>" ><?php echo $this->__('You have missed');?></a>
+	<?php } ?>
+</div>
+<?php } ?>

@@ -57,7 +57,7 @@
         <script type="text/javascript">decorateTable('my-reviews-table')</script>
     <?php echo $this->getToolbarHtml() ?>
 <?php else: ?>
-    <p><?php echo $this->__('You have submitted no reviews.') ?></p>
+    <p><?php echo $this->__("You haven't yet submitted any reviews.") ?></p>
 <?php endif; ?>
 <div class="buttons-set">
     <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>

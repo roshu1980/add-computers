@@ -95,3 +95,7 @@ button.button.youama-add-tocart-button > span { background: #00CC00 none repeat 
 }
 
 .cms-rma .ui-widget-header .ui-state-hover { background: black; border: 0; }
+
+.cms-request-quote .form-list label.error {
+    color: #f00;
+}

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <dailydeal translate="title" module="dailydeal">
+                                        <title>DailyDeal</title>
+                                        <sort_order>50</sort_order>
+                                    </dailydeal>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+	
+		<menu>
+		    <cmsmart>
+			 <title>Cmsmart Extensions</title>
+            <sort_order>1</sort_order>
+             <children>
+				<dailydeal>
+                     <title>Daily deal</title>
+                    <sort_order>1</sort_order>
+                <children>
+                    
+					
+					<newdailydeal module="dailydeal">
+                        <title>Add Deal Group</title>
+                        <sort_order>1</sort_order>
+                        <action>dailydeal_admin/manage_dailydeal/new</action>
+                    </newdailydeal>					
+					
+					<adddeal module="dailydeal">
+                        <title>Add Deal</title>
+                        <sort_order>0</sort_order>
+                        <action>dailydeal_admin/manage_dailydeal/adddeal</action>
+                    </adddeal>					
+
+                    <dailydeallist module="dailydeal">
+                        <title>Deal Group Manager</title>
+                        <sort_order>30</sort_order>
+                        <action>dailydeal_admin/manage_dailydeal/</action>
+                    </dailydeallist>
+				
+                    <alldeal module="dailydeal">
+                        <title>All Deals</title>
+                        <sort_order>31</sort_order>
+                        <action>dailydeal_admin/manage_dailydeal/alldeal/</action>
+                    </alldeal>
+					
+					<settings translate="title" module="dailydeal">
+                        <title>Settings</title>
+                        <action>adminhtml/system_config/edit/section/dailydeal</action>
+                        <sort_order>40</sort_order>
+                    </settings>
+					
+                </children>
+                </dailydeal>
+                    </children>
+            
+
+            </cmsmart>
+		</menu> 
+		
+        <translate>
+            <modules>
+                <Cmsmart_Dailydeal>
+                    <files>
+                        <default>Cmsmart_Dailydeal.csv</default>
+                    </files>
+                </Cmsmart_Dailydeal>
+            </modules>
+        </translate>
+</config>

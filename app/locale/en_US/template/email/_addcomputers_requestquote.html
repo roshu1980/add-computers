@@ -1,0 +1,55 @@
+<!--@subject [serversandspares.com] - Request a Quote submission @-->
+<div style="font:11px/1.35em Arial, Verdana, Helvetica, sans-serif;">
+  <table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; margin-bottom:10px;">
+    <tr>
+      <td align="center" valign="top">
+        <!-- [ header starts here] -->
+          <table cellspacing="0" cellpadding="0" border="0" width="650">
+            <tr>
+              <td valign="top">
+                <p>
+                  <a href="{{store url=""}}" style="color:#1E7EC8;"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="Magento" border="0"/></a>
+                </p>
+              </td>
+            </tr>
+          </table>
+          <!-- [ middle starts here] -->
+          <table cellspacing="0" cellpadding="0" border="0" width="650">
+            <tr>
+              <td valign="top">
+                <strong>Hello</strong>,
+                <br /><br />
+                A new "Request a Quote" form has been submitted to your server.
+                <br /><br />
+                <h3><strong>Customer data:</strong></h3>
+                <table>
+                    <tr>
+                        <td>Company Name: </td>
+                        <td>{{var company_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Contact Name: </td>
+                        <td>{{var contact_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Contact Telephone Number: </td>
+                        <td>{{var telephone}}</td>
+                    </tr>
+                    <tr>
+                        <td>Contact Email: </td>
+                        <td>{{var email}}</td>
+                    </tr>
+                </table>
+                <br />
+                <h3><strong>Products:</strong></h3>
+                {{block type='core/template' area='frontend' template='../../../default/theme673/template/addcomputers/emails/rma_products_partial.phtml' products=$products}}
+                <br /><br />
+                Best regards,<br />
+                ServersAndSpares Team.
+              </td>
+            </tr>
+          </table>
+      </td>
+    </tr>
+  </table>
+</div>

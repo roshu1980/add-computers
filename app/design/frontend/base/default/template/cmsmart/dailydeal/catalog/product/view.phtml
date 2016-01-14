@@ -1,0 +1,23 @@
+<?php
+$_product = $this->getProduct();
+$deal = $this->getdealByProduct($_product->getId());
+
+if($deal->getData()){
+?>
+<?php if($deal->getQuantity() > $deal->getSold()){ ?>
+<div class="dailydeal_product_view">
+	<div class="yousave-sold">
+		<span><?php echo $this->__('You save'); ?>: <span><?php echo (int)$deal->getSave(); ?>%</span></span>
+		<span><?php echo $this->__('Sold'); ?>: <span><?php echo (int)$deal->getSold(); ?></span>/<?php echo $deal->getQuantity();?></span>
+	</div>
+	
+	<div class="time-left-title" ><?php echo $this->__('Time Left:'); ?></div>
+	<div class="time-left">
+		<?php $differenceInSeconds = strtotime($deal->getClosetime()) - time(); ?>
+		<span class="clocktimer" value="<?php echo $differenceInSeconds ?>"></span>
+	</div>
+</div>
+
+<?php    	
+    }    }
+?>

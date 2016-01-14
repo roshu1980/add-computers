@@ -1,0 +1,16 @@
+<? if (Mage::getStoreConfig('news/news/userte')): ?>
+    <script src="<?php echo $this->getSkinUrl('') ?>cmsmart_news/js/tiny_mce/tiny_mce.js"></script>
+    <script src="<?php echo $this->getSkinUrl('') ?>cmsmart_news/js/init_rte.js"></script>
+
+    <script>
+        // Init rte
+        Cmsmart_NewsIntId = setInterval(
+        function(){
+            if(typeof tinyMCE != 'undefined' && $('anchor-content')){
+                initRTE();
+                clearInterval(Cmsmart_NewsIntId);
+            }
+        }
+        ,500)
+    </script>
+<? endif; ?>
